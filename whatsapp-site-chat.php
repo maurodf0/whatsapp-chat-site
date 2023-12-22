@@ -59,32 +59,32 @@ function wsc_setting_page() {
     <table class="form-table">
         <tr valign="top">
         <th scope="row">Telephone number</th>
-        <td><input type="text" name="wsc_number" value="<?php echo esc_attr( get_option('wsc_number') ); ?>" /></td>
+        <td><input type="text" name="wsc_number" value="<?php echo esc_attr( get_option('wsc_number', 111111111) ); ?>" /></td>
         </tr>
 
         <tr valign="top">
         <th scope="row">Button text</th>
-        <td><input type="text" name="wsc_text" value="<?php echo esc_attr( get_option('wsc_text') ); ?>" /></td>
+        <td><input type="text" name="wsc_text" value="<?php echo esc_attr( get_option('wsc_text', 'Scrivici su whatsapp') ); ?>" /></td>
         </tr>
 
         <tr valign="top">
         <th scope="row">Button background color</th>
-        <td><input type="color" name="wsc_color" value="<?php echo esc_attr( get_option('wsc_color') ); ?>" /></td>
+        <td><input type="color" name="wsc_color" value="<?php echo esc_attr( get_option('wsc_color', '#008000') ); ?>" /></td>
         </tr>
 
         <tr valign="top">
         <th scope="row">Button text color</th>
-        <td><input type="color" name="wsc_text_color" value="<?php echo esc_attr( get_option('wsc_text_color') ); ?>" /></td>
+        <td><input type="color" name="wsc_text_color" value="<?php echo esc_attr( get_option('wsc_text_color', '#ffffff') ); ?>" /></td>
         </tr>
 
         <tr valign="top">
         <th scope="row">Button Hover background color</th>
-        <td><input type="color" name="wsc_hover_color" value="<?php echo esc_attr( get_option('wsc_hover_color') ); ?>" /></td>
+        <td><input type="color" name="wsc_hover_color" value="<?php echo esc_attr( get_option('wsc_hover_color', '#026202') ); ?>" /></td>
         </tr>
 
         <tr valign="top">
         <th scope="row">Button Hover text color</th>
-        <td><input type="color" name="wsc_hover_text_color" value="<?php echo esc_attr( get_option('wsc_hover_text_color') ); ?>" /></td>
+        <td><input type="color" name="wsc_hover_text_color" value="<?php echo esc_attr( get_option('wsc_hover_text_color', '#ffffff') ); ?>" /></td>
         </tr>
     </table>
     
