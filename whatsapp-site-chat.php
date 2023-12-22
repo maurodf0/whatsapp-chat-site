@@ -20,7 +20,7 @@ function wsc_enqueue_style(){
 add_action('wp_enqueue_scripts', 'wsc_enqueue_style');
 
 function wsc_stamp_w(){
-    echo '<a class="wsc_btn" target="_blank" href="https://wa.me/' . get_option('wsc_number') .'">' . __('Write us on Whatsapp' , 'wsc') .'</a>';
+    echo '<a class="wsc_btn" target="_blank" href="https://wa.me/' . get_option('wsc_number') .'">' . get_option('wsc_text') .'</a>';
 }
 
 add_action('wp_footer', 'wsc_stamp_w');
@@ -41,6 +41,11 @@ function wsc_menu_page() {
 function wsc_plugin_settings() {
 	//register our settings
 	register_setting( 'wsc-plugin-settings-group', 'wsc_number' );
+    register_setting( 'wsc-plugin-settings-group', 'wsc_text' );
+    register_setting( 'wsc-plugin-settings-group', 'wsc_color' );
+    register_setting( 'wsc-plugin-settings-group', 'wsc_text_color' );
+    register_setting( 'wsc-plugin-settings-group', 'wsc_hover_color' );
+    register_setting( 'wsc-plugin-settings-group', 'wsc_hover_text_color' );
 }
 
 function wsc_setting_page() {
@@ -53,8 +58,33 @@ function wsc_setting_page() {
     <?php do_settings_sections( 'wsc-plugin-settings-group' ); ?>
     <table class="form-table">
         <tr valign="top">
-        <th scope="row">Your telephone number</th>
+        <th scope="row">Telephone number</th>
         <td><input type="text" name="wsc_number" value="<?php echo esc_attr( get_option('wsc_number') ); ?>" /></td>
+        </tr>
+
+        <tr valign="top">
+        <th scope="row">Button text</th>
+        <td><input type="text" name="wsc_text" value="<?php echo esc_attr( get_option('wsc_text') ); ?>" /></td>
+        </tr>
+
+        <tr valign="top">
+        <th scope="row">Button background color</th>
+        <td><input type="color" name="wsc_color" value="<?php echo esc_attr( get_option('wsc_color') ); ?>" /></td>
+        </tr>
+
+        <tr valign="top">
+        <th scope="row">Button text color</th>
+        <td><input type="color" name="wsc_text_color" value="<?php echo esc_attr( get_option('wsc_text_color') ); ?>" /></td>
+        </tr>
+
+        <tr valign="top">
+        <th scope="row">Button Hover background color</th>
+        <td><input type="color" name="wsc_hover_color" value="<?php echo esc_attr( get_option('wsc_hover_color') ); ?>" /></td>
+        </tr>
+
+        <tr valign="top">
+        <th scope="row">Button Hover text color</th>
+        <td><input type="color" name="wsc_hover_text_color" value="<?php echo esc_attr( get_option('wsc_hover_text_color') ); ?>" /></td>
         </tr>
     </table>
     
@@ -62,4 +92,22 @@ function wsc_setting_page() {
 
 </form>
 </div>
-<?php } ?>
+<?php } 
+
+function update_css(){
+    echo '
+    <style>
+    .wsc_btn {
+        background:' . esc_attr( get_option('wsc_color')) . ';
+        color:' . esc_attr( get_option('wsc_text_color')) . ';
+    }
+
+    .wsc_btn:hover {
+        background:' . esc_attr( get_option('wsc_hover_color')) . ';
+        color:' . esc_attr( get_option('wsc_hover_text_color')) . ';
+    }
+    </style>';
+}
+add_action('wp_head', 'update_css');
+
+?>
