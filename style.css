@@ -1,0 +1,17 @@
+.wsc_btn {
+    position: fixed;
+    left:20px;
+    bottom:25px;
+    background: green;
+    border-radius: 10px;
+    color:#fff;
+    padding:10px 14px;
+    transition: .25s ease-in-out;
+}
+
+.wsc_btn:hover {
+    transform: translateY(-10px);
+    color:#fff;
+    padding:10px 14px;
+    box-shadow: 0 8px 12px #00000033;
+}
