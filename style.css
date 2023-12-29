@@ -1,12 +1,16 @@
 .wsc_btn {
     position: fixed;
-    left:20px;
+    right:20px;
     bottom:25px;
-    background: #008000;
+    background: #25D366;
     border-radius: 10px;
     color:#fff;
     padding:10px 14px;
     transition: .25s ease-in-out;
+	display: flex;
+    gap: 5px;
+    align-items: center;
+	z-index:9999999;
 }
 
 .wsc_btn:hover {

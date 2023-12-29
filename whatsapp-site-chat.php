@@ -20,7 +20,7 @@ function wsc_enqueue_style(){
 add_action('wp_enqueue_scripts', 'wsc_enqueue_style');
 
 function wsc_stamp_w(){
-    echo '<a class="wsc_btn" target="_blank" href="https://wa.me/' . get_option('wsc_number') .'"><img src="whatsapp.svg">' . get_option('wsc_text') .'</a>';
+    echo '<a class="wsc_btn" target="_blank" href="https://wa.me/' . get_option('wsc_number') .'"><img src="'. plugins_url('whatsapp.svg', __FILE__).'">' . get_option('wsc_text') .'</a>';
 }
 
 add_action('wp_footer', 'wsc_stamp_w');
@@ -69,7 +69,7 @@ function wsc_setting_page() {
 
         <tr valign="top">
         <th scope="row">Button background color</th>
-        <td><input type="color" name="wsc_color" value="<?php echo esc_attr( get_option('wsc_color', '#008000') ); ?>" /></td>
+        <td><input type="color" name="wsc_color" value="<?php echo esc_attr( get_option('wsc_color', '#25D366') ); ?>" /></td>
         </tr>
 
         <tr valign="top">
@@ -98,13 +98,13 @@ function update_css(){
     echo '
     <style>
     .wsc_btn {
-        background:' . esc_attr( get_option('wsc_color')) . ';
-        color:' . esc_attr( get_option('wsc_text_color')) . ';
+        background:' . esc_attr( get_option('wsc_color')) . '!important;
+        color:' . esc_attr( get_option('wsc_text_color')) . ' !important;
     }
 
     .wsc_btn:hover {
-        background:' . esc_attr( get_option('wsc_hover_color')) . ';
-        color:' . esc_attr( get_option('wsc_hover_text_color')) . ';
+        background:' . esc_attr( get_option('wsc_hover_color')) . '!important;
+        color:' . esc_attr( get_option('wsc_hover_text_color')) . '!important;
     }
     </style>';
 }
