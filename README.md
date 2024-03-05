@@ -7,4 +7,6 @@
   <li>Change Number</li>
   <li>Change Text</li>
   <li>Change Color</li>
+  <li>Change Color on Hover</li>
+  <li>Change Alignment</li>
 </ul>
