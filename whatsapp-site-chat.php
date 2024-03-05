@@ -37,6 +37,18 @@ function wsc_menu_page() {
 	add_action( 'admin_init', 'wsc_plugin_settings' );
 }
 
+function wsc_activate() {
+    add_option('wsc_number', '111111111');
+    add_option('wsc_text', 'Scrivici su whatsapp');
+    add_option('wsc_color', '#25D366');
+    add_option('wsc_text_color', '#ffffff');
+    add_option('wsc_hover_color', '#026202');
+    add_option('wsc_hover_text_color', '#ffffff');
+    add_option('wsc_alignment', 'right');
+}
+
+register_activation_hook(__FILE__, 'wsc_activate');
+
 
 function wsc_plugin_settings() {
 	//register our settings
@@ -46,6 +58,7 @@ function wsc_plugin_settings() {
     register_setting( 'wsc-plugin-settings-group', 'wsc_text_color' );
     register_setting( 'wsc-plugin-settings-group', 'wsc_hover_color' );
     register_setting( 'wsc-plugin-settings-group', 'wsc_hover_text_color' );
+    register_setting( 'wsc-plugin-settings-group', 'wsc_location');
 }
 
 function wsc_setting_page() {
@@ -86,6 +99,15 @@ function wsc_setting_page() {
         <th scope="row">Button Hover text color</th>
         <td><input type="color" name="wsc_hover_text_color" value="<?php echo esc_attr( get_option('wsc_hover_text_color', '#ffffff') ); ?>" /></td>
         </tr>
+        <tr valign="top">
+        <th scope="row">Alignment</th>
+        <td>
+        <select name="wsc_alignment">
+        <option value="left" <?php selected( get_option('wsc_alignment'), 'left' ); ?>>Left</option>
+        <option value="right" <?php selected( get_option('wsc_alignment'), 'right' ); ?>>Right</option>
+   		</select>
+        </td>
+
     </table>
     
     <?php submit_button(); ?>
@@ -95,11 +117,13 @@ function wsc_setting_page() {
 <?php } 
 
 function update_css(){
+    $alignment = get_option('wsc_alignment', 'right');
     echo '
     <style>
     .wsc_btn {
         background:' . esc_attr( get_option('wsc_color')) . '!important;
         color:' . esc_attr( get_option('wsc_text_color')) . ' !important;
+        ' . $alignment . ': 20px;
     }
 
     .wsc_btn:hover {
