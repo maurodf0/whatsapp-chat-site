@@ -20,7 +20,7 @@ function wsc_enqueue_style(){
 add_action('wp_enqueue_scripts', 'wsc_enqueue_style');
 
 function wsc_stamp_w(){
-    echo '<a class="wsc_btn" target="_blank" href="https://wa.me/' . get_option('wsc_number') .'"><img src="'. plugins_url('whatsapp.svg', __FILE__).'">' . get_option('wsc_text') .'</a>';
+    echo '<a title="Chat on whatsapp" class="wsc_btn" target="_blank" href="https://wa.me/' . get_option('wsc_number') .'"><img alt="whatsapp svg logo" src="'. plugins_url('whatsapp.svg', __FILE__).'">' . get_option('wsc_text') .'</a>';
 }
 
 add_action('wp_footer', 'wsc_stamp_w');
